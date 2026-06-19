@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>青春心語Yes - 不迷路｜青春倡議徽章提示語產生器</title>
+  <title>2-3 青春心語Yes - 不迷路｜青春倡議徽章提示語產生器</title>
   <style>
     :root {
       --bg1: #fef8ff; --bg2: #eefcf8; --card: rgba(255,255,255,0.88); --text: #253238; --muted: #5f7078;
@@ -34,156 +35,176 @@
     .card.active { display:block; } @keyframes fade {from{opacity:0;transform:translateY(8px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
     h2 { margin:0 0 12px; color:#26333b; font-size:1.34rem; } .hint { margin:0 0 18px; color:var(--muted); }
     .intro-grid,.feature-grid { display:grid; gap:14px; } .intro-grid { grid-template-columns:1.2fr .8fr; } .feature-grid { grid-template-columns:repeat(3,1fr); margin-top:18px; }
-    
-    .hero-panel{position:relative; overflow:hidden; padding:24px; border-radius:24px; background:
-      linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.68)),
-      linear-gradient(120deg, color-mix(in srgb, var(--primary) 12%, white), color-mix(in srgb, var(--primary-2) 14%, white));
-      border:1px solid rgba(255,255,255,.92); box-shadow:0 16px 36px rgba(0,0,0,.06); animation:fade .28s ease-in-out;}
-    .hero-panel::before,.hero-panel::after{content:""; position:absolute; border-radius:999px; pointer-events:none;}
-    .hero-panel::before{width:150px; height:150px; right:-30px; top:-30px; background:color-mix(in srgb, var(--primary) 18%, transparent);}
-    .hero-panel::after{width:110px; height:110px; left:-18px; bottom:-22px; background:color-mix(in srgb, var(--primary-2) 16%, transparent);}
-    .hero-badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.86); color:var(--primary-dark); font-weight:800; font-size:.9rem; box-shadow:0 8px 20px rgba(0,0,0,.05);}
-    .hero-title{margin:14px 0 8px; font-size:clamp(1.55rem,3.5vw,2rem);}
-    .hero-text{margin:0; max-width:720px; color:var(--muted); font-size:1rem;}
-    .hero-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px;}
-    .hero-step{position:relative; padding:14px 12px 12px; border-radius:18px; background:rgba(255,255,255,.74); border:1px solid rgba(255,255,255,.95); text-align:center; box-shadow:0 10px 24px rgba(0,0,0,.04); animation:floatSoft 3.2s ease-in-out infinite;}
-    .hero-step:nth-child(2){animation-delay:.2s}.hero-step:nth-child(3){animation-delay:.4s}.hero-step:nth-child(4){animation-delay:.6s}
-    .hero-step span{display:inline-flex; width:30px; height:30px; align-items:center; justify-content:center; border-radius:999px; margin-bottom:8px; font-weight:900; color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-2));}
-    .hero-step b{display:block; color:var(--primary-dark);}
-    @keyframes floatSoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
-    
-    .intro-box,.feature-box,.summary,.checklist,.tips-box { background:rgba(255,255,255,.56); border:1px solid rgba(255,255,255,.85); border-radius:18px; }
-    .intro-box { padding:18px; } .intro-box strong{ color:var(--primary-dark); } .feature-box{ padding:16px; } .feature-box b{ display:block; margin-bottom:6px; color:var(--primary-dark); } .checklist{ padding:16px 18px; } .checklist li{ margin:8px 0; }
-    .options { display:grid; gap:12px; }
-    .option { width:100%; text-align:left; padding:16px 18px; background:rgba(255,255,255,.72); border:2px solid rgba(255,255,255,.8); border-radius:18px; cursor:pointer; transition:.18s ease; font:inherit; color:var(--text); box-shadow:0 10px 24px rgba(0,0,0,.03); position:relative; overflow:hidden; }
-    .option::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, color-mix(in srgb, var(--primary) 0%, transparent), color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary-2) 12%, transparent)); opacity:0; transition:.18s ease; }
-    .option:hover,.option.selected { transform:translateY(-2px); border-color:color-mix(in srgb, var(--primary) 55%, white); background:rgba(255,255,255,.92); } .option:hover::after,.option.selected::after{ opacity:1; }
-    .option strong,.option span{ position:relative; z-index:1; display:block; } .option strong{ color:var(--primary-dark); font-size:1.05rem; margin-bottom:4px; } .option span{ color:var(--muted); font-size:.95rem; }
-    .custom-box { display:none; margin-top:14px; padding:16px; background:rgba(255,244,209,.78); border:1px solid rgba(244,201,82,.45); border-radius:16px; } .custom-box.show{ display:block; animation:fade .2s ease-in-out; }
-    label{ display:block; font-weight:800; margin-bottom:6px; color:#5b4450; }
-    input[type="text"],textarea{ width:100%; padding:13px 14px; border:1px solid rgba(255,255,255,.85); border-radius:14px; font:inherit; resize:vertical; background:rgba(255,255,255,.92); color:#203039; }
-    input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in srgb, var(--primary) 55%, white); box-shadow:0 0 0 4px color-mix(in srgb, var(--primary) 10%, transparent); } textarea{ min-height:260px; white-space:pre-wrap; }
-    .nav{ display:flex; gap:10px; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-top:22px; }
-    .btn{ border:none; border-radius:14px; padding:12px 18px; cursor:pointer; font:inherit; font-weight:800; transition:.18s ease; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.07); } .btn:hover{ transform:translateY(-2px); }
-    .btn.primary{ background:linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 72%, white)); color:#fff; } .btn.secondary{ background:rgba(255,255,255,.76); color:var(--text); }
-    .btn.link{ background:linear-gradient(90deg, #4e8cff, #6b8dff); color:#fff; position:relative; animation:wiggle 1.35s ease-in-out infinite; transform-origin:center; }
-    .btn.link::after{ content:"前往生成"; position:absolute; top:-12px; right:-10px; background:#fff; color:#3f5fe0; font-size:.74rem; font-weight:900; padding:4px 8px; border-radius:999px; box-shadow:0 8px 18px rgba(65,83,179,.18); }
-    @keyframes wiggle {0%,100%{transform:rotate(0deg) translateY(0)}10%{transform:rotate(-2deg) translateY(-1px)}20%{transform:rotate(2deg) translateY(-2px)}30%{transform:rotate(-2deg) translateY(-1px)}40%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(0deg) translateY(0)}}
-    .btn:disabled{ opacity:.45; cursor:not-allowed; transform:none!important; } .summary{ display:grid; gap:10px; margin:14px 0 18px; padding:16px; } .summary-row{ display:grid; grid-template-columns:120px 1fr; gap:10px; } .summary-row b{ color:var(--primary-dark); }
-    .password{ font-size:1.2rem; font-weight:900; color:#8a4b00; background:rgba(255,244,209,.88); border:1px solid rgba(244,201,82,.55); border-radius:14px; padding:12px 14px; margin:12px 0; animation:pulse 2s ease-in-out infinite; }
-    @keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(244,201,82,0)}50%{box-shadow:0 0 0 8px rgba(244,201,82,.14)}} .copy-status{ margin-left:8px; color:#355d65; font-weight:800; } .footer-note{ color:var(--muted); font-size:.95rem; margin-top:12px; } .tips-box{ margin:14px 0 0; padding:14px 16px; border:1px dashed color-mix(in srgb, var(--primary) 30%, white); color:#556871; }
-    @media (max-width:840px){ .intro-grid,.feature-grid,.progress,.hero-steps{ grid-template-columns:1fr; } }
-    @media (max-width:680px){ .wrap{ width:min(100%, calc(100% - 18px)); margin:16px auto 24px; } header,.card{ padding:18px; } .summary-row{ grid-template-columns:1fr; } .btn.link::after{ display:none; } }
+
+```
+.hero-panel{position:relative; overflow:hidden; padding:24px; border-radius:24px; background:
+  linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.68)),
+  linear-gradient(120deg, color-mix(in srgb, var(--primary) 12%, white), color-mix(in srgb, var(--primary-2) 14%, white));
+  border:1px solid rgba(255,255,255,.92); box-shadow:0 16px 36px rgba(0,0,0,.06); animation:fade .28s ease-in-out;}
+.hero-panel::before,.hero-panel::after{content:""; position:absolute; border-radius:999px; pointer-events:none;}
+.hero-panel::before{width:150px; height:150px; right:-30px; top:-30px; background:color-mix(in srgb, var(--primary) 18%, transparent);}
+.hero-panel::after{width:110px; height:110px; left:-18px; bottom:-22px; background:color-mix(in srgb, var(--primary-2) 16%, transparent);}
+.hero-badge{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:999px; background:rgba(255,255,255,.86); color:var(--primary-dark); font-weight:800; font-size:.9rem; box-shadow:0 8px 20px rgba(0,0,0,.05);}
+.hero-title{margin:14px 0 8px; font-size:clamp(1.55rem,3.5vw,2rem);}
+.hero-text{margin:0; max-width:720px; color:var(--muted); font-size:1rem;}
+.hero-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:20px;}
+.hero-step{position:relative; padding:14px 12px 12px; border-radius:18px; background:rgba(255,255,255,.74); border:1px solid rgba(255,255,255,.95); text-align:center; box-shadow:0 10px 24px rgba(0,0,0,.04); animation:floatSoft 3.2s ease-in-out infinite;}
+.hero-step:nth-child(2){animation-delay:.2s}.hero-step:nth-child(3){animation-delay:.4s}.hero-step:nth-child(4){animation-delay:.6s}
+.hero-step span{display:inline-flex; width:30px; height:30px; align-items:center; justify-content:center; border-radius:999px; margin-bottom:8px; font-weight:900; color:#fff; background:linear-gradient(135deg,var(--primary),var(--primary-2));}
+.hero-step b{display:block; color:var(--primary-dark);}
+@keyframes floatSoft{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+.intro-box,.feature-box,.summary,.checklist,.tips-box { background:rgba(255,255,255,.56); border:1px solid rgba(255,255,255,.85); border-radius:18px; }
+.intro-box { padding:18px; } .intro-box strong{ color:var(--primary-dark); } .feature-box{ padding:16px; } .feature-box b{ display:block; margin-bottom:6px; color:var(--primary-dark); } .checklist{ padding:16px 18px; } .checklist li{ margin:8px 0; }
+.options { display:grid; gap:12px; }
+.option { width:100%; text-align:left; padding:16px 18px; background:rgba(255,255,255,.72); border:2px solid rgba(255,255,255,.8); border-radius:18px; cursor:pointer; transition:.18s ease; font:inherit; color:var(--text); box-shadow:0 10px 24px rgba(0,0,0,.03); position:relative; overflow:hidden; }
+.option::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg, color-mix(in srgb, var(--primary) 0%, transparent), color-mix(in srgb, var(--primary) 10%, transparent), color-mix(in srgb, var(--primary-2) 12%, transparent)); opacity:0; transition:.18s ease; }
+.option:hover,.option.selected { transform:translateY(-2px); border-color:color-mix(in srgb, var(--primary) 55%, white); background:rgba(255,255,255,.92); } .option:hover::after,.option.selected::after{ opacity:1; }
+.option strong,.option span{ position:relative; z-index:1; display:block; } .option strong{ color:var(--primary-dark); font-size:1.05rem; margin-bottom:4px; } .option span{ color:var(--muted); font-size:.95rem; }
+.custom-box { display:none; margin-top:14px; padding:16px; background:rgba(255,244,209,.78); border:1px solid rgba(244,201,82,.45); border-radius:16px; } .custom-box.show{ display:block; animation:fade .2s ease-in-out; }
+label{ display:block; font-weight:800; margin-bottom:6px; color:#5b4450; }
+input[type="text"],textarea{ width:100%; padding:13px 14px; border:1px solid rgba(255,255,255,.85); border-radius:14px; font:inherit; resize:vertical; background:rgba(255,255,255,.92); color:#203039; }
+input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in srgb, var(--primary) 55%, white); box-shadow:0 0 0 4px color-mix(in srgb, var(--primary) 10%, transparent); } textarea{ min-height:260px; white-space:pre-wrap; }
+.nav{ display:flex; gap:10px; justify-content:space-between; align-items:center; flex-wrap:wrap; margin-top:22px; }
+.btn{ border:none; border-radius:14px; padding:12px 18px; cursor:pointer; font:inherit; font-weight:800; transition:.18s ease; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.07); } .btn:hover{ transform:translateY(-2px); }
+.btn.primary{ background:linear-gradient(90deg, var(--primary), color-mix(in srgb, var(--primary) 72%, white)); color:#fff; } .btn.secondary{ background:rgba(255,255,255,.76); color:var(--text); }
+.btn.link{ background:linear-gradient(90deg, #4e8cff, #6b8dff); color:#fff; position:relative; animation:wiggle 1.35s ease-in-out infinite; transform-origin:center; }
+.btn.link::after{ content:"前往生成"; position:absolute; top:-12px; right:-10px; background:#fff; color:#3f5fe0; font-size:.74rem; font-weight:900; padding:4px 8px; border-radius:999px; box-shadow:0 8px 18px rgba(65,83,179,.18); }
+@keyframes wiggle {0%,100%{transform:rotate(0deg) translateY(0)}10%{transform:rotate(-2deg) translateY(-1px)}20%{transform:rotate(2deg) translateY(-2px)}30%{transform:rotate(-2deg) translateY(-1px)}40%{transform:rotate(2deg) translateY(0)}50%{transform:rotate(0deg) translateY(0)}}
+.btn:disabled{ opacity:.45; cursor:not-allowed; transform:none!important; } .summary{ display:grid; gap:10px; margin:14px 0 18px; padding:16px; } .summary-row{ display:grid; grid-template-columns:120px 1fr; gap:10px; } .summary-row b{ color:var(--primary-dark); }
+.password{ font-size:1.2rem; font-weight:900; color:#8a4b00; background:rgba(255,244,209,.88); border:1px solid rgba(244,201,82,.55); border-radius:14px; padding:12px 14px; margin:12px 0; animation:pulse 2s ease-in-out infinite; }
+@keyframes pulse {0%,100%{box-shadow:0 0 0 0 rgba(244,201,82,0)}50%{box-shadow:0 0 0 8px rgba(244,201,82,.14)}} .copy-status{ margin-left:8px; color:#355d65; font-weight:800; } .footer-note{ color:var(--muted); font-size:.95rem; margin-top:12px; } .tips-box{ margin:14px 0 0; padding:14px 16px; border:1px dashed color-mix(in srgb, var(--primary) 30%, white); color:#556871; }
+@media (max-width:840px){ .intro-grid,.feature-grid,.progress,.hero-steps{ grid-template-columns:1fr; } }
+@media (max-width:680px){ .wrap{ width:min(100%, calc(100% - 18px)); margin:16px auto 24px; } header,.card{ padding:18px; } .summary-row{ grid-template-columns:1fr; } .btn.link::after{ display:none; } }
+```
+
   </style>
 </head>
 <body>
   <div class="bg-deco"></div>
   <div class="wrap">
     <header>
-      <div class="eyebrow">🌟 青春倡議徽章提示語產生器</div>
-      <h1>青春心語Yes - 不迷路</h1>
+      <div class="eyebrow">🌟 2-3 青春倡議徽章提示語產生器</div>
+      <h1>2-3 青春心語Yes - 不迷路</h1>
       <p class="subtitle">選好標語與風格，快速產生你的青春倡議徽章提示語。</p>
-</header>
+    </header>
 
-    <div class="progress" aria-label="流程進度">
-      <div class="step-pill active" id="pill1">1 功能說明</div>
-      <div class="step-pill" id="pill2">2 選標語</div>
-      <div class="step-pill" id="pill3">3 選風格</div>
-      <div class="step-pill" id="pill4">4 確認內容</div>
-      <div class="step-pill" id="pill5">5 提示語與密碼</div>
+```
+<div class="progress" aria-label="流程進度">
+  <div class="step-pill active" id="pill1">1 功能說明</div>
+  <div class="step-pill" id="pill2">2 選標語</div>
+  <div class="step-pill" id="pill3">3 選風格</div>
+  <div class="step-pill" id="pill4">4 確認內容</div>
+  <div class="step-pill" id="pill5">5 提示語與密碼</div>
+</div>
+
+<section class="card active" id="page1">
+  <div class="hero-panel">
+    <div class="hero-badge">✨ 2-3 徽章提示語小工具</div>
+    <h2 class="hero-title">2-3 青春心語Yes - 不迷路</h2>
+    <p class="hero-text">選一個喜歡的標語，再挑一種風格，系統就會幫你整理出可直接貼到 Gemini 的提示語。</p>
+    <div class="hero-steps">
+      <div class="hero-step"><span>1</span><b>選標語</b></div>
+      <div class="hero-step"><span>2</span><b>選風格</b></div>
+      <div class="hero-step"><span>3</span><b>確認內容</b></div>
+      <div class="hero-step"><span>4</span><b>複製提示語</b></div>
     </div>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="resetAll()">重新開始</button>
+    <button class="btn primary" onclick="showPage(2)">開始製作</button>
+  </div>
+</section>
 
-    
-    <section class="card active" id="page1">
-      <div class="hero-panel">
-        <div class="hero-badge">✨ 徽章提示語小工具</div>
-        <h2 class="hero-title">青春心語Yes - 不迷路</h2>
-        <p class="hero-text">選一個喜歡的標語，再挑一種風格，系統就會幫你整理出可直接貼到 Gemini 的提示語。</p>
-        <div class="hero-steps">
-          <div class="hero-step"><span>1</span><b>選標語</b></div>
-          <div class="hero-step"><span>2</span><b>選風格</b></div>
-          <div class="hero-step"><span>3</span><b>確認內容</b></div>
-          <div class="hero-step"><span>4</span><b>複製提示語</b></div>
-        </div>
-      </div>
-      <div class="nav">
-        <button class="btn secondary" onclick="resetAll()">重新開始</button>
-        <button class="btn primary" onclick="showPage(2)">開始製作</button>
-      </div>
-    </section>
+<section class="card" id="page2">
+  <h2>第二步：選擇標語</h2>
+  <p class="hint">請選擇一則推薦標語，或選擇「自訂標語」自行輸入。</p>
+  <div class="options" id="sloganOptions"></div>
+  <div class="custom-box" id="customBox">
+    <label for="customSlogan">自訂標語</label>
+    <input type="text" id="customSlogan" maxlength="20" placeholder="請輸入 4 至 12 字左右的倡議標語，例如：清楚選擇不衝動" />
+    <p class="footer-note">建議使用短句，避免過長造成圖片生成時文字不清楚。</p>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="showPage(1)">上一步</button>
+    <button class="btn primary" id="next2" onclick="goToStyle()" disabled>下一步：選風格</button>
+  </div>
+</section>
 
-    <section class="card" id="page2">
-      <h2>第二步：選擇標語</h2>
-      <p class="hint">請選擇一則推薦標語，或選擇「自訂標語」自行輸入。</p>
-      <div class="options" id="sloganOptions"></div>
-      <div class="custom-box" id="customBox">
-        <label for="customSlogan">自訂標語</label>
-        <input type="text" id="customSlogan" maxlength="20" placeholder="請輸入 4 至 12 字左右的倡議標語，例如：清楚選擇不衝動" />
-        <p class="footer-note">建議使用短句，避免過長造成圖片生成時文字不清楚。</p>
-      </div>
-      <div class="nav">
-        <button class="btn secondary" onclick="showPage(1)">上一步</button>
-        <button class="btn primary" id="next2" onclick="goToStyle()" disabled>下一步：選風格</button>
-      </div>
-    </section>
+<section class="card" id="page3">
+  <h2>第三步：選擇徽章風格</h2>
+  <p class="hint">請選擇想要呈現的視覺風格。</p>
+  <div class="options" id="styleOptions"></div>
+  <div class="nav">
+    <button class="btn secondary" onclick="showPage(2)">上一步</button>
+    <button class="btn primary" id="next3" onclick="goToConfirm()" disabled>下一步：確認內容</button>
+  </div>
+</section>
 
-    <section class="card" id="page3">
-      <h2>第三步：選擇徽章風格</h2>
-      <p class="hint">請選擇想要呈現的視覺風格。</p>
-      <div class="options" id="styleOptions"></div>
-      <div class="nav">
-        <button class="btn secondary" onclick="showPage(2)">上一步</button>
-        <button class="btn primary" id="next3" onclick="goToConfirm()" disabled>下一步：確認內容</button>
-      </div>
-    </section>
+<section class="card" id="page4">
+  <h2>第四步：確認目前選到的內容</h2>
+  <div class="summary">
+    <div class="summary-row"><b>程式版本</b><span>2-3 青春心語Yes - 不迷路</span></div>
+    <div class="summary-row"><b>原始懶人包</b><span>青春不迷路</span></div>
+    <div class="summary-row"><b>標語</b><span id="confirmSlogan"></span></div>
+    <div class="summary-row"><b>風格</b><span id="confirmStyle"></span></div>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="showPage(3)">上一步</button>
+    <button class="btn primary" onclick="goToResult()">確認無誤，產生提示語</button>
+  </div>
+</section>
 
-    <section class="card" id="page4">
-      <h2>第四步：確認目前選到的內容</h2>
-      
-      <div class="summary">
-        <div class="summary-row"><b>程式版本</b><span>青春心語Yes - 不迷路</span></div>
-        <div class="summary-row"><b>原始懶人包</b><span>青春不迷路</span></div>
-        <div class="summary-row"><b>標語</b><span id="confirmSlogan"></span></div>
-        <div class="summary-row"><b>風格</b><span id="confirmStyle"></span></div>
-      </div>
-            <div class="nav">
-        <button class="btn secondary" onclick="showPage(3)">上一步</button>
-        <button class="btn primary" onclick="goToResult()">確認無誤，產生提示語</button>
-      </div>
-    </section>
+<section class="card" id="page5">
+  <h2>第五步：複製 Gemini 圖片生成提示語</h2>
+  <p class="hint">請先複製提示語，再開啟 Gemini，自行上傳照片並貼上提示語生成圖片。</p>
+  <div class="summary">
+    <div class="summary-row"><b>程式版本</b><span>2-3 青春心語Yes - 不迷路</span></div>
+    <div class="summary-row"><b>原始懶人包</b><span>青春不迷路</span></div>
+    <div class="summary-row"><b>標語</b><span id="sumSlogan"></span></div>
+    <div class="summary-row"><b>風格</b><span id="sumStyle"></span></div>
+  </div>
+  <div class="password" id="passwordBox">通關密碼：234</div>
+  <label for="promptOutput">Gemini 圖片生成提示語</label>
+  <textarea id="promptOutput" readonly></textarea>
+  <div class="tips-box">小提醒：先上傳個人照或團體照，再貼上這段提示語，通常比較容易生成出接近需求的徽章效果。</div>
+  <div class="nav">
+    <button class="btn secondary" onclick="showPage(4)">上一步</button>
+    <div>
+      <button class="btn primary" onclick="copyPrompt()">一鍵複製提示語</button>
+      <span class="copy-status" id="copyStatus"></span>
+    </div>
+  </div>
+  <div class="nav">
+    <button class="btn secondary" onclick="resetAll()">重新開始</button>
+    <a class="btn link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">開啟 Gemini</a>
+  </div>
+  <p class="footer-note">提醒：圖片生成時，請自行上傳想使用的個人照或團體照；通關密碼僅供活動使用，不會自動寫進提示語。</p>
+</section>
+```
 
-    <section class="card" id="page5">
-      <h2>第五步：複製 Gemini 圖片生成提示語</h2>
-      <p class="hint">請先複製提示語，再開啟 Gemini，自行上傳照片並貼上提示語生成圖片。</p>
-      <div class="summary">
-        <div class="summary-row"><b>程式版本</b><span>青春心語Yes - 不迷路</span></div>
-        <div class="summary-row"><b>原始懶人包</b><span>青春不迷路</span></div>
-        <div class="summary-row"><b>標語</b><span id="sumSlogan"></span></div>
-        <div class="summary-row"><b>風格</b><span id="sumStyle"></span></div>
-      </div>
-      <div class="password" id="passwordBox">通關密碼：3333</div>
-      <label for="promptOutput">Gemini 圖片生成提示語</label>
-      <textarea id="promptOutput" readonly></textarea>
-      <div class="tips-box">小提醒：先上傳個人照或團體照，再貼上這段提示語，通常比較容易生成出接近需求的徽章效果。</div>
-      <div class="nav">
-        <button class="btn secondary" onclick="showPage(4)">上一步</button>
-        <div>
-          <button class="btn primary" onclick="copyPrompt()">一鍵複製提示語</button>
-          <span class="copy-status" id="copyStatus"></span>
-        </div>
-      </div>
-      <div class="nav">
-        <button class="btn secondary" onclick="resetAll()">重新開始</button>
-        <a class="btn link" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer">開啟 Gemini</a>
-      </div>
-      <p class="footer-note">提醒：圖片生成時，請自行上傳想使用的個人照或團體照；通關密碼僅供活動使用，不會自動寫進提示語。</p>
-    </section>
   </div>
 
   <script>
     const topic = {
-      displayTitle: '青春心語Yes - 不迷路', legacyName: '青春不迷路', axis: '理性看待性誘惑，清楚做出情感決定', password: '3333', slogans: ['誘惑邀約先暫停', '壓力來時說不行', '守住界線更安心', '看見風險會求助', '清楚選擇不衝動', '尊重自己也尊重你', '守住本心經營愛', '用愛讓性有意義', '不炫不比感受愛']
+      displayTitle: '2-3 青春心語Yes - 不迷路',
+      legacyName: '青春不迷路',
+      axis: '理性看待性誘惑，清楚做出情感決定',
+      password: '234',
+      slogans: [
+        '理性思考做選擇',
+        '真愛不急著越界',
+        '識破誘惑保自身',
+        '慎思後果我負責',
+        '維護感受不勉強',
+        '覺察誘惑多思考',
+        '親密界線要守住',
+        '情感關係少衝動',
+        '喜歡你也尊重你',
+        '衝動管理愛自己'
+      ]
     };
+
     const styles = {
       S1: { name: "青春校園風", desc: "明亮、清爽、有校園活動感，適合班級展示。", prompt: "明亮、清爽、有校園活動感，像班級活動貼紙或校園成果徽章。" },
       S2: { name: "清新手寫風", desc: "柔和、溫暖，像手帳貼紙或青春筆記。", prompt: "柔和、溫暖、清新，像手帳貼紙或青春筆記，有手寫感、可愛貼紙感、溫柔配色與青春感。" },
@@ -192,30 +213,116 @@
       S5: { name: "社團徽章風", desc: "正式、有識別感，像社團、活動或任務徽章。", prompt: "正式、有識別感，像社團徽章、校園活動徽章或任務通關徽章，構圖清楚、有邊框與章徽感。" },
       S6: { name: "夢幻柔光風", desc: "溫柔、明亮、有希望感，適合正向宣言。", prompt: "溫柔、明亮、有柔光與希望感，像青春宣言海報或溫暖的夢幻貼紙。" }
     };
+
     const state = { slogan: "", sloganType: "", styleKey: "" };
+
     function makeOption({ title, desc, onClick, selected }) {
-      const btn = document.createElement('button'); btn.type = 'button'; btn.className = 'option' + (selected ? ' selected' : '');
-      btn.innerHTML = `<strong>${title}</strong>${desc ? `<span>${desc}</span>` : ''}`; btn.addEventListener('click', onClick); return btn;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'option' + (selected ? ' selected' : '');
+      btn.innerHTML = `<strong>${title}</strong>${desc ? `<span>${desc}</span>` : ''}`;
+      btn.addEventListener('click', onClick);
+      return btn;
     }
+
     function renderSlogans() {
-      const box = document.getElementById('sloganOptions'); const customBox = document.getElementById('customBox'); const customInput = document.getElementById('customSlogan');
-      box.innerHTML = ''; customBox.classList.toggle('show', state.sloganType === 'custom'); document.getElementById('next2').disabled = !state.slogan;
+      const box = document.getElementById('sloganOptions');
+      const customBox = document.getElementById('customBox');
+      const customInput = document.getElementById('customSlogan');
+      box.innerHTML = '';
+      customBox.classList.toggle('show', state.sloganType === 'custom');
+      document.getElementById('next2').disabled = !state.slogan;
+
       topic.slogans.forEach((slogan, index) => {
-        box.appendChild(makeOption({ title: `P${index + 1}｜${slogan}`, desc: '', selected: state.slogan === slogan && state.sloganType === 'preset', onClick: () => { state.slogan = slogan; state.sloganType = 'preset'; customInput.value = ''; document.getElementById('next2').disabled = false; renderSlogans(); } }));
+        box.appendChild(makeOption({
+          title: `P${index + 1}｜${slogan}`,
+          desc: '',
+          selected: state.slogan === slogan && state.sloganType === 'preset',
+          onClick: () => {
+            state.slogan = slogan;
+            state.sloganType = 'preset';
+            customInput.value = '';
+            document.getElementById('next2').disabled = false;
+            renderSlogans();
+          }
+        }));
       });
-      box.appendChild(makeOption({ title: '自訂標語', desc: '自行輸入想放在徽章上的倡議標語。', selected: state.sloganType === 'custom', onClick: () => { state.sloganType = 'custom'; state.slogan = customInput.value.trim(); document.getElementById('next2').disabled = state.slogan.length === 0; renderSlogans(); document.getElementById('customBox').classList.add('show'); customInput.focus(); } }));
+
+      box.appendChild(makeOption({
+        title: '自訂標語',
+        desc: '自行輸入想放在徽章上的倡議標語。',
+        selected: state.sloganType === 'custom',
+        onClick: () => {
+          state.sloganType = 'custom';
+          state.slogan = customInput.value.trim();
+          document.getElementById('next2').disabled = state.slogan.length === 0;
+          renderSlogans();
+          document.getElementById('customBox').classList.add('show');
+          customInput.focus();
+        }
+      }));
     }
+
     function renderStyles() {
-      const box = document.getElementById('styleOptions'); box.innerHTML = '';
+      const box = document.getElementById('styleOptions');
+      box.innerHTML = '';
       Object.entries(styles).forEach(([key, style]) => {
-        box.appendChild(makeOption({ title: `${key}｜${style.name}`, desc: style.desc, selected: state.styleKey === key, onClick: () => { state.styleKey = key; document.getElementById('next3').disabled = false; renderStyles(); } }));
+        box.appendChild(makeOption({
+          title: `${key}｜${style.name}`,
+          desc: style.desc,
+          selected: state.styleKey === key,
+          onClick: () => {
+            state.styleKey = key;
+            document.getElementById('next3').disabled = false;
+            renderStyles();
+          }
+        }));
       });
     }
-    function showPage(n) { for (let i = 1; i <= 5; i++) { document.getElementById(`page${i}`).classList.toggle('active', i === n); document.getElementById(`pill${i}`).classList.toggle('active', i === n); } window.scrollTo({ top: 0, behavior: 'smooth' }); }
-    function goToStyle() { if (state.sloganType === 'custom') { const value = document.getElementById('customSlogan').value.trim(); if (!value) { alert('請輸入自訂標語。'); return; } state.slogan = value; } if (!state.slogan) return; renderStyles(); showPage(3); }
-    function goToConfirm() { if (!state.styleKey) return; const style = styles[state.styleKey]; document.getElementById('confirmSlogan').textContent = state.slogan; document.getElementById('confirmStyle').textContent = `${style.name}：${style.desc}`; showPage(4); }
-    function goToResult() { if (!state.styleKey || !state.slogan) return; const style = styles[state.styleKey]; document.getElementById('sumSlogan').textContent = state.slogan; document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`; document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style); document.getElementById('copyStatus').textContent = ''; showPage(5); }
-    function buildPrompt(topic, slogan, style) { return `請根據我上傳的照片，生成一張「圓形青春倡議徽章」。
+
+    function showPage(n) {
+      for (let i = 1; i <= 5; i++) {
+        document.getElementById(`page${i}`).classList.toggle('active', i === n);
+        document.getElementById(`pill${i}`).classList.toggle('active', i === n);
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function goToStyle() {
+      if (state.sloganType === 'custom') {
+        const value = document.getElementById('customSlogan').value.trim();
+        if (!value) {
+          alert('請輸入自訂標語。');
+          return;
+        }
+        state.slogan = value;
+      }
+      if (!state.slogan) return;
+      renderStyles();
+      showPage(3);
+    }
+
+    function goToConfirm() {
+      if (!state.styleKey) return;
+      const style = styles[state.styleKey];
+      document.getElementById('confirmSlogan').textContent = state.slogan;
+      document.getElementById('confirmStyle').textContent = `${style.name}：${style.desc}`;
+      showPage(4);
+    }
+
+    function goToResult() {
+      if (!state.styleKey || !state.slogan) return;
+      const style = styles[state.styleKey];
+      document.getElementById('sumSlogan').textContent = state.slogan;
+      document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`;
+      document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style);
+      document.getElementById('copyStatus').textContent = '';
+      document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}`;
+      showPage(5);
+    }
+
+    function buildPrompt(topic, slogan, style) {
+      return `請根據我上傳的照片，生成一張「圓形青春倡議徽章」。
 
 主題為：「${topic.displayTitle}」
 此版本對應原主題為：「${topic.legacyName}」
@@ -244,11 +351,49 @@
 11. 不要加入通關密碼。
 12. 不要改寫標語，不要把其他文字誤當成標語。
 
-請生成一張完成度高、可直接作為校園倡議活動成果展示的徽章圖片。`; }
-    async function copyPrompt() { const text = document.getElementById('promptOutput').value; const status = document.getElementById('copyStatus'); try { await navigator.clipboard.writeText(text); status.textContent = '已複製'; } catch (err) { const textarea = document.getElementById('promptOutput'); textarea.focus(); textarea.select(); document.execCommand('copy'); status.textContent = '已複製'; } }
-    function resetAll() { state.slogan=''; state.sloganType=''; state.styleKey=''; document.getElementById('customSlogan').value=''; document.getElementById('next2').disabled=true; document.getElementById('next3').disabled=true; renderSlogans(); renderStyles(); document.getElementById('copyStatus').textContent=''; document.getElementById('promptOutput').value=''; showPage(1); }
-    document.getElementById('customSlogan').addEventListener('input', (e) => { if (state.sloganType === 'custom') { state.slogan = e.target.value.trim(); document.getElementById('next2').disabled = state.slogan.length === 0; } });
-    renderSlogans(); renderStyles();
+請生成一張完成度高、可直接作為校園倡議活動成果展示的徽章圖片。`;
+    }
+
+    async function copyPrompt() {
+      const text = document.getElementById('promptOutput').value;
+      const status = document.getElementById('copyStatus');
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = '已複製';
+      } catch (err) {
+        const textarea = document.getElementById('promptOutput');
+        textarea.focus();
+        textarea.select();
+        document.execCommand('copy');
+        status.textContent = '已複製';
+      }
+    }
+
+    function resetAll() {
+      state.slogan='';
+      state.sloganType='';
+      state.styleKey='';
+      document.getElementById('customSlogan').value='';
+      document.getElementById('next2').disabled=true;
+      document.getElementById('next3').disabled=true;
+      renderSlogans();
+      renderStyles();
+      document.getElementById('copyStatus').textContent='';
+      document.getElementById('promptOutput').value='';
+      document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}`;
+      showPage(1);
+    }
+
+    document.getElementById('customSlogan').addEventListener('input', (e) => {
+      if (state.sloganType === 'custom') {
+        state.slogan = e.target.value.trim();
+        document.getElementById('next2').disabled = state.slogan.length === 0;
+      }
+    });
+
+    renderSlogans();
+    renderStyles();
   </script>
+
 </body>
 </html>
