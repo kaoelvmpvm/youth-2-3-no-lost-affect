@@ -164,7 +164,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
     <div class="summary-row"><b>標語</b><span id="sumSlogan"></span></div>
     <div class="summary-row"><b>風格</b><span id="sumStyle"></span></div>
   </div>
-  <div class="password" id="passwordBox">通關密碼：234</div>
+  <div class="password" id="passwordBox">通關密碼：234【要三思】</div>
   <label for="promptOutput">Gemini 圖片生成提示語</label>
   <textarea id="promptOutput" readonly></textarea>
   <div class="tips-box">小提醒：先上傳個人照或團體照，再貼上這段提示語，通常比較容易生成出接近需求的徽章效果。</div>
@@ -317,7 +317,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       document.getElementById('sumStyle').textContent = `${style.name}：${style.desc}`;
       document.getElementById('promptOutput').value = buildPrompt(topic, state.slogan, style);
       document.getElementById('copyStatus').textContent = '';
-      document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}`;
+      document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【要三思】`;
       showPage(5);
     }
 
@@ -380,7 +380,7 @@ input[type="text"]:focus,textarea:focus{ outline:none; border-color:color-mix(in
       renderStyles();
       document.getElementById('copyStatus').textContent='';
       document.getElementById('promptOutput').value='';
-      document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}`;
+      document.getElementById('passwordBox').textContent = `通關密碼：${topic.password}【要三思】`;
       showPage(1);
     }
 
